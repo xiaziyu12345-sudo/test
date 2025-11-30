@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
     <title>个人简历 - 酒吧 & KTV 短视频运营</title>
+
     <style>
-        /* ===== 全局基础变量 ===== */
+        /************************************************
+         * 全局变量 & 基础
+         ************************************************/
         :root {
             --bg-dark: #050609;
             --bg-panel: #11131a;
             --bg-panel-soft: #181b24;
+
             --gold: #d9a94f;
             --gold-soft: #f4d9a5;
+
             --text-main: #f5f5f5;
             --text-sub: #c2c2c2;
+
             --accent: #ff7a2f;
         }
 
@@ -21,13 +28,24 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
             margin: 0;
-            font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", -apple-system,
+                         BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
             background:
-                radial-gradient(circle at 10% 0%, rgba(255, 186, 73, 0.15), transparent 60%),
-                radial-gradient(circle at 90% 100%, rgba(120, 82, 255, 0.18), transparent 55%),
+                radial-gradient(circle at 10% 0%,
+                                rgba(255, 186, 73, 0.15),
+                                transparent 60%),
+                radial-gradient(circle at 90% 100%,
+                                rgba(120, 82, 255, 0.18),
+                                transparent 55%),
                 var(--bg-dark);
+
             color: var(--text-main);
         }
 
@@ -36,23 +54,33 @@
             text-decoration: none;
         }
 
-        /* ===== 顶部导航 ===== */
+        /************************************************
+         * 顶部导航
+         ************************************************/
         .nav {
             position: sticky;
             top: 0;
             z-index: 10;
+
             backdrop-filter: blur(14px);
-            background: linear-gradient(to right, rgba(5,6,9,0.96), rgba(5,6,9,0.85));
-            border-bottom: 1px solid rgba(217,169,79,0.25);
+            background: linear-gradient(
+                to right,
+                rgba(5, 6, 9, 0.96),
+                rgba(5, 6, 9, 0.86)
+            );
+
+            border-bottom: 1px solid rgba(217, 169, 79, 0.25);
         }
 
         .nav-inner {
             max-width: 1120px;
             margin: 0 auto;
+
+            padding: 10px 18px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 18px;
         }
 
         .nav-logo {
@@ -64,9 +92,13 @@
         .nav-logo-mark {
             width: 26px;
             height: 26px;
+
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 20%, #fff6d1, #d19c42);
-            box-shadow: 0 0 10px rgba(217,169,79,0.7);
+            background: radial-gradient(circle at 30% 20%,
+                                        #fff6d1,
+                                        #d19c42);
+
+            box-shadow: 0 0 10px rgba(217, 169, 79, 0.7);
         }
 
         .nav-logo-text {
@@ -78,6 +110,7 @@
         .nav-links {
             display: flex;
             gap: 18px;
+
             font-size: 13px;
             color: var(--text-sub);
         }
@@ -90,12 +123,20 @@
 
         .nav-links a::after {
             content: "";
+
             position: absolute;
             left: 0;
             bottom: 0;
+
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--gold), var(--accent));
+
+            background: linear-gradient(
+                90deg,
+                var(--gold),
+                var(--accent)
+            );
+
             transition: width 0.25s ease;
         }
 
@@ -103,28 +144,48 @@
             width: 100%;
         }
 
-        /* ===== 主页面容器 ===== */
+        /************************************************
+         * 页面主容器
+         ************************************************/
         .page {
             max-width: 1120px;
             margin: 32px auto 60px;
+
             padding: 0 18px 40px;
         }
 
         .card {
-            background: radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 55%), var(--bg-panel);
+            background:
+                radial-gradient(circle at top,
+                                rgba(255, 255, 255, 0.03),
+                                transparent 55%),
+                var(--bg-panel);
+
             border-radius: 18px;
-            border: 1px solid rgba(217,169,79,0.4);
+            border: 1px solid rgba(217, 169, 79, 0.4);
+
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+
             padding: 32px 32px 40px;
+
             position: relative;
             overflow: hidden;
         }
 
         .card::before {
             content: "";
+
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(217,169,79,0.16), transparent 45%, rgba(163,122,255,0.08), transparent 80%);
+
+            background: linear-gradient(
+                135deg,
+                rgba(217, 169, 79, 0.16),
+                transparent 45%,
+                rgba(163, 122, 255, 0.08),
+                transparent 80%
+            );
+
             mix-blend-mode: screen;
             opacity: 0.9;
             pointer-events: none;
@@ -135,10 +196,15 @@
             z-index: 1;
         }
 
-        /* ===== 顶部英雄区 ===== */
+        /************************************************
+         * 顶部英雄区（个人简介）
+         ************************************************/
         .hero {
             display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            grid-template-columns:
+                minmax(0, 3fr)
+                minmax(0, 2fr);
+
             gap: 30px;
             align-items: center;
         }
@@ -180,10 +246,12 @@
         .badge {
             font-size: 12px;
             padding: 4px 10px;
+
             border-radius: 999px;
-            border: 1px solid rgba(244,217,165,0.7);
+            border: 1px solid rgba(244, 217, 165, 0.7);
+
             color: var(--gold-soft);
-            background: rgba(0,0,0,0.35);
+            background: rgba(0, 0, 0, 0.35);
         }
 
         .hero-summary {
@@ -199,29 +267,49 @@
         .hero-frame {
             width: 220px;
             height: 220px;
+
             border-radius: 26px;
             padding: 2px;
-            background: conic-gradient(from 210deg, #f8e3b2, #c28b38, #6a4bff, #f8e3b2);
+
+            background: conic-gradient(
+                from 210deg,
+                #f8e3b2,
+                #c28b38,
+                #6a4bff,
+                #f8e3b2
+            );
+
             box-shadow:
-                0 0 20px rgba(248,227,178,0.5),
-                0 0 45px rgba(0,0,0,0.8);
+                0 0 20px rgba(248, 227, 178, 0.5),
+                0 0 45px rgba(0, 0, 0, 0.8);
         }
 
         .hero-frame-inner {
             width: 100%;
             height: 100%;
+
             border-radius: 22px;
-            background: radial-gradient(circle at 30% 10%, #f8e6c8, #c49e5a 55%, #1a1410 100%);
+
+            background: radial-gradient(
+                circle at 30% 10%,
+                #f8e6c8,
+                #c49e5a 55%,
+                #1a1410 100%
+            );
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             color: #2b1a07;
             font-weight: bold;
             font-size: 16px;
             text-align: center;
         }
 
-        /* ===== 通用 section ===== */
+        /************************************************
+         * 通用区块样式
+         ************************************************/
         .section {
             margin-top: 40px;
         }
@@ -246,7 +334,11 @@
 
         .section-line {
             height: 1px;
-            background: linear-gradient(90deg, var(--gold-soft), transparent);
+            background: linear-gradient(
+                90deg,
+                var(--gold-soft),
+                transparent
+            );
             margin-bottom: 16px;
             opacity: 0.85;
         }
@@ -257,10 +349,15 @@
             line-height: 1.8;
         }
 
-        /* ===== 两列布局 ===== */
+        /************************************************
+         * 两列布局
+         ************************************************/
         .two-cols {
             display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+            grid-template-columns:
+                minmax(0, 3fr)
+                minmax(0, 2.2fr);
+
             gap: 26px;
         }
 
@@ -270,9 +367,11 @@
             }
         }
 
-        /* ===== 时间轴（工作经历） ===== */
+        /************************************************
+         * 时间轴（工作经历）
+         ************************************************/
         .timeline {
-            border-left: 1px solid rgba(214,167,84,0.6);
+            border-left: 1px solid rgba(214, 167, 84, 0.6);
             margin-left: 10px;
             padding-left: 18px;
             position: relative;
@@ -287,11 +386,18 @@
             position: absolute;
             left: -29px;
             top: 5px;
+
             width: 10px;
             height: 10px;
+
             border-radius: 50%;
-            background: radial-gradient(circle, #ffe9b8, #c59233);
-            box-shadow: 0 0 10px rgba(212,166,80,0.8);
+            background: radial-gradient(
+                circle,
+                #ffe9b8,
+                #c59233
+            );
+
+            box-shadow: 0 0 10px rgba(212, 166, 80, 0.8);
         }
 
         .timeline-title {
@@ -317,10 +423,12 @@
             margin-bottom: 4px;
         }
 
-        /* ===== 技能网格 ===== */
+        /************************************************
+         * 技能网格
+         ************************************************/
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0,1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px 22px;
         }
 
@@ -339,6 +447,7 @@
         .skill-bar {
             width: 100%;
             height: 8px;
+
             border-radius: 999px;
             background: #262932;
             overflow: hidden;
@@ -347,7 +456,12 @@
         .skill-bar-fill {
             height: 100%;
             border-radius: 999px;
-            background: linear-gradient(90deg, #f6dca5, #d29a3a);
+
+            background: linear-gradient(
+                90deg,
+                #f6dca5,
+                #d29a3a
+            );
         }
 
         .skill-desc {
@@ -356,18 +470,21 @@
             margin-top: 4px;
         }
 
-        /* ===== 项目卡片 ===== */
+        /************************************************
+         * 代表项目卡片
+         ************************************************/
         .projects {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0,1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 16px;
         }
 
         @media (max-width: 980px) {
             .projects {
-                grid-template-columns: repeat(2, minmax(0,1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
+
         @media (max-width: 640px) {
             .projects {
                 grid-template-columns: 1fr;
@@ -375,11 +492,18 @@
         }
 
         .project-card {
-            background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 65%), var(--bg-panel-soft);
+            background:
+                radial-gradient(circle at top,
+                                rgba(255, 255, 255, 0.05),
+                                transparent 65%),
+                var(--bg-panel-soft);
+
             border-radius: 14px;
-            border: 1px solid rgba(217,169,79,0.45);
+            border: 1px solid rgba(217, 169, 79, 0.45);
+
             padding: 12px 14px 14px;
-            box-shadow: 0 10px 26px rgba(0,0,0,0.6);
+
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
         }
 
         .project-label {
@@ -407,7 +531,9 @@
             line-height: 1.6;
         }
 
-        /* ===== 兴趣与标签 ===== */
+        /************************************************
+         * 标签/兴趣
+         ************************************************/
         .tags-line {
             display: flex;
             flex-wrap: wrap;
@@ -416,37 +542,78 @@
 
         .tag-pill {
             border-radius: 999px;
-            border: 1px solid rgba(244,217,165,0.7);
-            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(244, 217, 165, 0.7);
+
+            background: rgba(0, 0, 0, 0.3);
             padding: 6px 12px;
+
             font-size: 12px;
             color: var(--gold-soft);
         }
 
-        /* ===== 联系区域 ===== */
+        /************************************************
+         * 联系方式 & 微信二维码
+         ************************************************/
         .contact-section {
             text-align: center;
-            margin-top: 26px;
+            margin-top: 30px;
         }
 
         .btn-main {
             display: inline-block;
             padding: 11px 26px;
+
             font-size: 14px;
             border-radius: 999px;
             border: none;
+
             cursor: pointer;
-            background: linear-gradient(135deg, #f4d9a5, #d59f42);
+
+            background: linear-gradient(
+                135deg,
+                #f4d9a5,
+                #d59f42
+            );
+
             color: #2b1b05;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.7), 0 0 18px rgba(244,217,165,0.7);
+
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.7),
+                0 0 18px rgba(244, 217, 165, 0.7);
         }
 
         .contact-tip {
             font-size: 12px;
             color: var(--text-sub);
             margin-top: 8px;
+        }
+
+        .contact-qr {
+            margin-top: 18px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-qr img {
+            width: 160px;
+            height: 160px;
+
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(244, 217, 165, 0.9);
+
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+            object-fit: cover;
+        }
+
+        .contact-wechat-id {
+            font-size: 14px;
+            color: var(--text-main);
         }
 
     </style>
@@ -456,165 +623,299 @@
     <!-- 顶部导航 -->
     <div class="nav">
         <div class="nav-inner">
+
             <div class="nav-logo">
                 <div class="nav-logo-mark"></div>
-                <div class="nav-logo-text">夜生活短视频运营</div>
+                <div class="nav-logo-text">
+                    夜生活短视频运营
+                </div>
             </div>
+
             <div class="nav-links">
                 <a href="#about">关于我</a>
                 <a href="#exp">工作经历</a>
                 <a href="#projects">代表项目</a>
                 <a href="#more">更多信息</a>
+                <a href="#contact">联系我</a>
             </div>
+
         </div>
     </div>
 
-    <!-- 主体内容 -->
+    <!-- 页面内容 -->
     <main class="page">
         <section class="card">
             <div class="card-inner">
 
-                <!-- 英雄区 -->
+                <!-- 顶部英雄区 -->
                 <div class="hero">
+
+                    <!-- 左侧：基本信息 -->
                     <div class="hero-left">
-                        <div class="hero-title-cn">个人简历</div>
-                        <div class="hero-role">短视频运营经理｜酒吧 &amp; KTV 行业专注</div>
-                        <div class="hero-tagline">用内容点亮夜色 · 用数据放大氛围</div>
+                        <div class="hero-title-cn">
+                            个人简历
+                        </div>
+
+                        <div class="hero-role">
+                            短视频运营经理｜酒吧 &amp; KTV 行业专注
+                        </div>
+
+                        <div class="hero-tagline">
+                            用内容点亮夜色 · 用数据放大氛围
+                        </div>
 
                         <div class="hero-badges">
-                            <span class="badge">城市夜生活内容操盘</span>
-                            <span class="badge">抖音 / 小红书深度实战</span>
-                            <span class="badge">线下门店引流与转化</span>
-                            <span class="badge">品牌氛围感打造</span>
+                            <span class="badge">
+                                城市夜生活内容操盘
+                            </span>
+
+                            <span class="badge">
+                                抖音 / 小红书深度实战
+                            </span>
+
+                            <span class="badge">
+                                线下门店引流与转化
+                            </span>
+
+                            <span class="badge">
+                                品牌氛围感打造
+                            </span>
                         </div>
 
                         <p class="hero-summary">
-                            深耕酒吧 &amp; KTV 场景的短视频运营人，熟悉夜场用户的情绪节奏，
-                            擅长用“故事感 + 氛围感 + 数据复盘”打造可持续的内容矩阵。
-                            过往为多家门店完成从 0 到 1 的账号搭建，累计播放破千万，
-                            多条作品进入本地同城推荐，为门店带来稳定的到店转化与品牌记忆点。
+                            深耕酒吧 &amp; KTV 场景的短视频运营人，
+                            熟悉夜场用户的情绪节奏，擅长用
+                            “故事感 + 氛围感 + 数据复盘”
+                            打造可持续的内容矩阵。
+                            过往为多家门店完成从 0 到 1 的账号搭建，
+                            累计播放破千万，多条作品进入本地同城推荐，
+                            为门店带来稳定的到店转化与品牌记忆点。
                         </p>
                     </div>
 
+                    <!-- 右侧：头像/LOGO 占位 -->
                     <div class="hero-right">
                         <div class="hero-frame">
                             <div class="hero-frame-inner">
-                                可替换为<br>个人头像或<br>品牌 LOGO
+                                可替换为<br />
+                                个人头像或品牌 LOGO
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- 关于我 -->
                 <div class="section" id="about">
+
                     <div class="section-header">
-                        <div class="section-title">关于我</div>
-                        <div class="section-tag">个人简介与标签</div>
+                        <div class="section-title">
+                            关于我
+                        </div>
+                        <div class="section-tag">
+                            个人定位与内容思路
+                        </div>
                     </div>
+
                     <div class="section-line"></div>
+
                     <div class="two-cols">
+
                         <div>
                             <p>
-                                我更关注“夜生活体验”本身，而不仅是简单地拍店内环境。<br>
-                                在内容层面，我擅长从用户视角拆解：他们来酒吧 / KTV 想获得什么情绪？
-                                想晒什么样的内容到朋友圈？愿意为哪种氛围买单？<br><br>
-                                在方法层面，我习惯用“内容版型 + 数据反馈”迭代账号：
-                                通过稳定的内容结构保障更新效率，再根据播放量、完播率、互动率和到店反馈进行持续优化，
-                                让账号既有风格，又能稳定产出结果。
+                                我更关注“夜生活体验”本身，而不仅是
+                                简单地展示店内环境。<br />
+                                在内容层面，我会从用户视角拆解：
+                                他们来酒吧 / KTV 想获得什么情绪？
+                                更愿意把什么样的画面发到朋友圈？
+                                愿意为哪种氛围买单？<br /><br />
+                                在方法层面，我习惯用
+                                「内容版型 + 数据反馈」迭代账号：
+                                通过稳定的内容结构保证更新效率，
+                                再根据播放量、完播率、互动率、
+                                到店反馈进行持续优化，
+                                让账号既有风格，又稳定产出结果。
                             </p>
                         </div>
+
                         <div>
-                            <p><strong>快速标签：</strong></p>
+                            <p>
+                                <strong>快速标签：</strong>
+                            </p>
+
                             <div class="tags-line">
-                                <span class="tag-pill">夜场氛围故事化表达</span>
-                                <span class="tag-pill">剧情向 / 氛围向视频结构设计</span>
-                                <span class="tag-pill">门店活动内容包装与宣发</span>
-                                <span class="tag-pill">达人探店合作沟通统筹</span>
+                                <span class="tag-pill">
+                                    夜场氛围故事化表达
+                                </span>
+                                <span class="tag-pill">
+                                    剧情向 / 氛围向视频结构设计
+                                </span>
+                                <span class="tag-pill">
+                                    门店活动内容包装与宣发
+                                </span>
+                                <span class="tag-pill">
+                                    探店达人沟通与项目统筹
+                                </span>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <!-- 工作经历 + 技能 -->
+                <!-- 工作经历 + 技能结构 -->
                 <div class="section" id="exp">
+
                     <div class="section-header">
-                        <div class="section-title">工作经历与专业能力</div>
-                        <div class="section-tag">实战经验与技能结构</div>
+                        <div class="section-title">
+                            工作经历与专业能力
+                        </div>
+                        <div class="section-tag">
+                            实战经验与技能结构
+                        </div>
                     </div>
+
                     <div class="section-line"></div>
 
                     <div class="two-cols">
+
                         <!-- 左侧：时间轴经历 -->
                         <div>
                             <div class="timeline">
+
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
-                                    <div class="timeline-title">短视频运营经理｜酒吧 &amp; KTV 娱乐集团</div>
-                                    <div class="timeline-sub">2019 年 - 至今 · 城市夜生活内容统筹</div>
+
+                                    <div class="timeline-title">
+                                        短视频运营经理｜酒吧 &amp; KTV 娱乐集团
+                                    </div>
+
+                                    <div class="timeline-sub">
+                                        2019 年 - 至今 · 城市夜生活内容统筹
+                                    </div>
+
                                     <ul>
-                                        <li>负责多家门店短视频账号从 0 到 1 的搭建，完成账号定位、内容矩阵与更新节奏规划。</li>
-                                        <li>搭建剧情向、氛围向、活动向等多种内容模板，提高团队拍摄与剪辑效率。</li>
-                                        <li>基于数据复盘调整选题方向，多条作品自然流量突破 50W+ 播放。</li>
-                                        <li>联合探店博主、生活方式类达人 50+，持续为门店争取同城推荐位和曝光。</li>
-                                        <li>配合跨年、情人节、万圣节等节日档活动策划，实现“线上声量 + 线下客流”双拉升。</li>
+                                        <li>
+                                            负责多家门店短视频账号从 0 到 1 搭建，完成账号定位、
+                                            内容矩阵与更新节奏规划。
+                                        </li>
+                                        <li>
+                                            搭建剧情向、氛围向、活动向等多种内容模板，
+                                            提高团队拍摄与剪辑效率。
+                                        </li>
+                                        <li>
+                                            基于数据复盘调整选题方向，多条作品自然流量突破 50W+ 播放。
+                                        </li>
+                                        <li>
+                                            联合探店博主、生活方式类达人 50+，
+                                            持续为门店争取同城推荐位和曝光。
+                                        </li>
+                                        <li>
+                                            围绕跨年、情人节、万圣节等节日档策划活动宣发，
+                                            实现“线上声量 + 线下客流”双拉升。
+                                        </li>
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
 
                         <!-- 右侧：技能结构 -->
                         <div>
-                            <div class="section-header" style="margin-top:0;">
-                                <div class="section-title" style="font-size:18px;">核心技能结构</div>
-                                <div class="section-tag">内容 + 平台 + 数据 + 活动</div>
+                            <div class="section-header" style="margin-top: 0;">
+                                <div class="section-title" style="font-size: 18px;">
+                                    核心技能结构
+                                </div>
+                                <div class="section-tag">
+                                    内容 · 平台 · 数据 · 活动
+                                </div>
                             </div>
+
                             <div class="skills-grid">
+
                                 <div>
-                                    <div class="skill-item-title">内容策划与脚本设计</div>
-                                    <div class="skill-bar">
-                                        <div class="skill-bar-fill" style="width:92%;"></div>
+                                    <div class="skill-item-title">
+                                        内容策划与脚本设计
                                     </div>
-                                    <div class="skill-desc">擅长设计剧情结构、分镜节奏和情绪起伏，适配酒吧 / KTV 场景。</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-bar-fill" style="width: 92%;"></div>
+                                    </div>
+                                    <div class="skill-desc">
+                                        擅长设计剧情结构、分镜节奏和情绪起伏，
+                                        适配酒吧 / KTV 的氛围与人群。
+                                    </div>
                                 </div>
+
                                 <div>
-                                    <div class="skill-item-title">抖音 / 小红书平台运营</div>
-                                    <div class="skill-bar">
-                                        <div class="skill-bar-fill" style="width:90%;"></div>
+                                    <div class="skill-item-title">
+                                        抖音 / 小红书平台运营
                                     </div>
-                                    <div class="skill-desc">熟悉平台推荐逻辑、话题机制与内容安全红线，保证账号稳步成长。</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-bar-fill" style="width: 90%;"></div>
+                                    </div>
+                                    <div class="skill-desc">
+                                        熟悉平台推荐逻辑、话题机制与内容安全红线，
+                                        确保账号稳步发展。
+                                    </div>
                                 </div>
+
                                 <div>
-                                    <div class="skill-item-title">数据分析与复盘优化</div>
-                                    <div class="skill-bar">
-                                        <div class="skill-bar-fill" style="width:88%;"></div>
+                                    <div class="skill-item-title">
+                                        数据分析与内容复盘
                                     </div>
-                                    <div class="skill-desc">通过播放、完播、互动、到店反馈等维度进行复盘并调整策略。</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-bar-fill" style="width: 88%;"></div>
+                                    </div>
+                                    <div class="skill-desc">
+                                        通过播放、完播、互动、到店反馈等指标进行复盘，
+                                        针对性优化内容与选题。
+                                    </div>
                                 </div>
+
                                 <div>
-                                    <div class="skill-item-title">活动宣发与直播脚本设计</div>
-                                    <div class="skill-bar">
-                                        <div class="skill-bar-fill" style="width:86%;"></div>
+                                    <div class="skill-item-title">
+                                        活动宣发与直播脚本
                                     </div>
-                                    <div class="skill-desc">围绕节日档、主题派对、酒水套餐做整体内容包装与直播节奏设计。</div>
+                                    <div class="skill-bar">
+                                        <div class="skill-bar-fill" style="width: 86%;"></div>
+                                    </div>
+                                    <div class="skill-desc">
+                                        围绕节日档、主题派对、酒水套餐做整体内容包装，
+                                        制定直播流程与话术节奏。
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- 代表项目 -->
                 <div class="section" id="projects">
+
                     <div class="section-header">
-                        <div class="section-title">代表项目</div>
-                        <div class="section-tag">典型案例与结果</div>
+                        <div class="section-title">
+                            代表项目
+                        </div>
+                        <div class="section-tag">
+                            典型案例与结果呈现
+                        </div>
                     </div>
+
                     <div class="section-line"></div>
 
                     <div class="projects">
+
                         <div class="project-card">
-                            <div class="project-label">长期栏目项目</div>
-                            <div class="project-title">「城市夜生活」短视频企划</div>
-                            <div class="project-meta">同城夜生活话题 · 累计播放破 130W+</div>
+                            <div class="project-label">
+                                长期栏目项目
+                            </div>
+                            <div class="project-title">
+                                「城市夜生活」短视频企划
+                            </div>
+                            <div class="project-meta">
+                                同城夜生活话题 · 累计播放破 130W+
+                            </div>
                             <div class="project-desc">
                                 以真实客人视角与城市夜景为主线，呈现“下班后”的放松状态和夜生活情绪，
                                 系列内容持续进入同城推荐，为门店沉淀一批忠诚夜场客群与自然口碑。
@@ -622,64 +923,128 @@
                         </div>
 
                         <div class="project-card">
-                            <div class="project-label">产品与空间展示</div>
-                            <div class="project-title">KTV 包厢升级记录系列</div>
-                            <div class="project-meta">高客单价包厢预订率明显提升</div>
+                            <div class="project-label">
+                                产品与空间展示
+                            </div>
+                            <div class="project-title">
+                                KTV 包厢升级记录系列
+                            </div>
+                            <div class="project-meta">
+                                高客单价包厢预订率明显提升
+                            </div>
                             <div class="project-desc">
-                                通过“前后对比 + 灯光氛围 + 真实体验”形式，完整展示包厢升级过程，
-                                强调私密感与高级感，成功带动门店高价包厢的咨询量与预订转化。
+                                通过“前后对比 + 灯光氛围 + 真实体验”的形式，完整展示包厢升级过程，
+                                强调私密感与高级感，视频发布后，高价位包厢的咨询量与预订转化明显上升。
                             </div>
                         </div>
 
                         <div class="project-card">
-                            <div class="project-label">节日活动矩阵</div>
-                            <div class="project-title">跨年 / 情人节节日档活动宣发</div>
-                            <div class="project-meta">短视频 + 图文 + 直播 · 全渠道联动</div>
+                            <div class="project-label">
+                                节日活动矩阵
+                            </div>
+                            <div class="project-title">
+                                跨年 / 情人节节日档活动宣发
+                            </div>
+                            <div class="project-meta">
+                                短视频 + 图文 + 直播 · 全渠道联动
+                            </div>
                             <div class="project-desc">
-                                围绕节日主题策划活动内容矩阵，提前通过倒计时、舞台灯光、氛围剪影等内容预热，
+                                围绕节日主题策划内容矩阵，提前通过倒计时、舞台灯光、氛围剪影等内容预热，
                                 活动期间门店客流与酒水销售均有明显抬升，形成“内容即宣传”的长期打法。
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <!-- 教育背景 + 兴趣特质 -->
+                <!-- 教育背景与兴趣特质 -->
                 <div class="section" id="more">
+
                     <div class="section-header">
-                        <div class="section-title">教育背景与个人特质</div>
-                        <div class="section-tag">性格、爱好与创作风格</div>
+                        <div class="section-title">
+                            教育背景与个人特质
+                        </div>
+                        <div class="section-tag">
+                            性格、爱好与创作气质来源
+                        </div>
                     </div>
+
                     <div class="section-line"></div>
 
                     <div class="two-cols">
+
                         <div>
                             <p><strong>教育背景</strong></p>
                             <p>
-                                电子商务学士｜XX 大学<br>
-                                2013 年 - 2017 年<br><br>
+                                电子商务学士｜XX 大学<br />
+                                2013 年 - 2017 年<br /><br />
                                 在校期间系统学习品牌营销、消费者行为分析与电商运营，
-                                为之后在“线下消费场景 + 短视频内容”领域的深入实践打下理论基础，
-                                也帮助我在做内容时更关注用户决策链路与转化路径。
+                                为之后在“线下夜生活场景 + 短视频内容”领域的实践打下理论基础，
+                                也帮助我在做内容时更加关注用户决策链路与转化路径。
                             </p>
                         </div>
+
                         <div>
-                            <p><strong>兴趣爱好与创作气质</strong></p>
+                            <p><strong>兴趣爱好与创作风格</strong></p>
                             <div class="tags-line">
-                                <span class="tag-pill">🏀 篮球：喜欢快节奏对抗，注重整体节奏掌控</span>
-                                <span class="tag-pill">🎮 游戏：偏爱团队竞技与剧情向，从中学习“沉浸感”设计</span>
-                                <span class="tag-pill">📷 夜景记录：爱拍城市夜景、灯光和人群，用作内容灵感素材库</span>
-                                <span class="tag-pill">🎧 夜生活文化：关注 DJ、Livehouse 与舞美设计，更懂夜场用户情绪点</span>
+                                <span class="tag-pill">
+                                    🏀 篮球：喜欢快节奏对抗，注重节奏和配合
+                                </span>
+                                <span class="tag-pill">
+                                    🎮 游戏：偏爱团队竞技与剧情向，从中学习“沉浸体验”的设计
+                                </span>
+                                <span class="tag-pill">
+                                    📷 夜景记录：爱拍城市夜景、灯光、人群，用作内容灵感素材库
+                                </span>
+                                <span class="tag-pill">
+                                    🎧 夜生活文化：关注 DJ、Livehouse、舞美设计，更懂夜场用户情绪点
+                                </span>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <!-- 联系方式 -->
-                <div class="contact-section">
-                    <a href="mailto:your-email@example.com" class="btn-main">联系我</a>
-                    <div class="contact-tip">
-                        如需查看具体账号案例或完整数据表现，可通过邮箱与我联系获取作品合集。
+                <!-- 联系方式 + 微信二维码 -->
+                <div class="contact-section" id="contact">
+
+                    <!-- 邮箱按钮：如不需要可改成纯文字 -->
+                    <div class="btn-main">
+                        可通过邮箱与我联系
                     </div>
+                    <div class="contact-tip">
+                        如需查看更多完整账号案例与数据表现，可通过邮箱或微信与我获取作品合集。
+                    </div>
+
+                    <!-- 微信二维码区域 -->
+                    <div class="contact-qr">
+
+                        <div class="contact-wechat-id">
+                            微信号：your-wechat-id
+                        </div>
+
+                        <!-- 这里使用你上传的二维码图片，注意是 jpg -->
+                        <img src="images/wechat-qr.jpg"
+                             alt="微信二维码" />
+
+                        <div class="contact-tip">
+                            建议在微信中打开本页面，长按识别上方二维码添加好友；
+                            或截图保存后在微信“扫一扫 - 从相册选取”识别。
+                        </div>
+                    </div>
+
+                    <!-- 尝试调起微信扫一扫（部分环境可用） -->
+                    <div style="margin-top: 14px;">
+                        <a href="weixin://dl/scan"
+                           class="btn-main"
+                           style="padding: 8px 22px; font-size: 13px;">
+                            打开微信扫一扫
+                        </a>
+                        <div class="contact-tip">
+                            提示：不同手机 / 浏览器支持情况不同，如无法打开，请直接使用二维码添加。
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
